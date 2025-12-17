@@ -1,0 +1,35 @@
+/*
+ 9CA3AF gray
+ F5C518 gold   
+*/
+
+body {
+    font-family: "Geom", sans-serif;
+}
+.active {
+    background-color: #4266FE;
+    border-radius: 5px;
+}
+.vault-active {
+    background-color: #4266FE;
+}
+.vaults-container {
+    max-height: calc(80vh - 80px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+
+.vaults-container::-webkit-scrollbar {
+    width: 8px; /* عرض الـ scrollbar */
+}
+
+.vaults-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 7px;
+}
+
+.vaults-container::-webkit-scrollbar-thumb {
+    background-color: #2A2A2A;
+    border-radius: 3px;
+}

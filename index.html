@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geom:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Tailwind CDN file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- css file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="">
+    <div class="container">
+        <div class="app-window grid grid-cols-1 md:grid-cols-[360px_1fr] lg:grid-cols-[240px_400px_1fr] bg-[#1a1a1a] w-screen h-screen overflow-hidden text-white">
+            <!-- Sidebar -->
+            <aside class="sidebar p-7 bg-[#2a2a2a] border-r border-black h-screen w-full fixed left-0 inset-y-0 z-50 -translate-x-full lg:translate-x-0 lg:relative transform transition-transform duration-300 ease-in-out">
+                <div class="aside-header flex items-center justify-between">
+                    <div class="circles flex gap-2">
+                        <div class="circle w-[15px] h-[15px] bg-[#FF5F57] rounded-full"></div>
+                        <div class="circle w-[15px] h-[15px] bg-[#FFBD2E] rounded-full"></div>
+                        <div class="circle w-[15px] h-[15px] bg-[#28C840] rounded-full"></div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-sidebar lg:hidden icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+                </div>
+                <div class="sidebar-content border-t border-[#1a1a1a] pt-8 flex flex-col gap-3 mt-6">
+                    <div class="all-items flex items-center justify-between active p-2 cursor-pointer">
+                        <div class="all-items-content flex gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-lock"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 2a5 5 0 0 1 5 5v3a3 3 0 0 1 3 3v6a3 3 0 0 1 -3 3h-10a3 3 0 0 1 -3 -3v-6a3 3 0 0 1 3 -3v-3a5 5 0 0 1 5 -5m0 12a2 2 0 0 0 -1.995 1.85l-.005 .15a2 2 0 1 0 2 -2m0 -10a3 3 0 0 0 -3 3v3h6v-3a3 3 0 0 0 -3 -3" /></svg>
+                            <span>All Items</span>
+                        </div>
+                        <span class="items-number">10</span>
+                    </div>
+                    <div class="favorite-items flex items-center justify-between p-2 cursor-pointer">
+                        <div class="favorite-items-content flex gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-star text-[#F5C518]"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8.243 7.34l-6.38 .925l-.113 .023a1 1 0 0 0 -.44 1.684l4.622 4.499l-1.09 6.355l-.013 .11a1 1 0 0 0 1.464 .944l5.706 -3l5.693 3l.1 .046a1 1 0 0 0 1.352 -1.1l-1.091 -6.355l4.624 -4.5l.078 -.085a1 1 0 0 0 -.633 -1.62l-6.38 -.926l-2.852 -5.78a1 1 0 0 0 -1.794 0l-2.853 5.78z" /></svg>
+                            <span>Favorite List</span>
+                        </div>
+                        <span class="fav-items-number">5</span>
+                    </div>
+                </div>
+            </aside>
+            <!-- Accounts List -->
+            <section class="accounts-list border-r border-black py-7">
+                <div class="side-bar-hidden px-3 flex items-center gap-4 mb-4 lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="open-sidebar icon icon-tabler icons-tabler-outline icon-tabler-menu-2 cursor-pointer"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+                    <h2 class="text-xl">Vault</h2>
+                </div>
+                <div class="search-bar flex justify-between px-3">
+                    <input type="text" class="search-input bg-[#2a2a2a] px-4 py-2 rounded focus:outline-none"placeholder="Search Vault">
+                    <button class="add-btn bg-[#4266FE] px-4 py-1 rounded text-xl">+</button>   
+                </div>  
+                <div class="vaults-container flex flex-col gap-2 mt-8 overflow-y-auto max-h-[80vh] pr-2">
+                    <!-- vault item -->
+                    <!-- <div class="vault-item flex gap-4 vault-active cursor-pointer p-3">
+                        <div class="vault-icon bg-[#3547DE] px-3 py-1 rounded flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+                        </div>
+                        <div class="vault-content">
+                            <div class="vault-title font-semibold">facebook</div>
+                            <div class="vault-email text-[#D9D5D5]">ahmed@gmail.com</div>
+                        </div>
+                    </div> -->
+                    <!-- vault item -->
+                    <!-- <div class="vault-item flex gap-4 cursor-pointer p-3">
+                        <div class="vault-icon bg-[#3547DE] px-3 py-1 rounded flex items-center justify-center text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg>
+                        </div>
+                        <div class="vault-content">
+                            <div class="vault-title font-semibold">facebook</div>
+                            <div class="vault-email text-[#D9D5D5]">ahmed@gmail.com</div>
+                        </div>
+                    </div> -->
+                </div>
+            </section>
+            <!-- Favorite List -->
+            <section class="favorite-list border-r border-black py-7 hidden">
+                <div class="side-bar-hidden px-3 flex items-center gap-4 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" class="open-fav-sidebar lg:hidden icon icon-tabler icons-tabler-outline icon-tabler-menu-2 cursor-pointer"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+                    <h2 class="text-3xl text-center">Favorite List</h2> 
+                </div>
+                <div class="fav-container flex flex-col gap-4 mt-8 overflow-y-auto max-h-[80vh] pr-2">
+                </div>
+            </section>
+            <!-- Details Panel -->
+            <section class="deatils p-7 hidden md:block">
+                <div class="vault-container">
+                </div>
+            </section>
+        </div>
+        <!-- Add/Edit Modal -->
+        <dialog class="dialog w-[90vw] max-w-[600px] m-auto bg-[#2a2a2a] p-0 rounded-xl border-none text-white [&::backdrop]:bg-black/10 [&::backdrop]:backdrop-blur-sm" id="noteDialog">
+            <div class="dialog-content p-5 md:p-7">
+                <div class="dialog-header flex items-center justify-between mb-5">
+                    <h2 class="dialog-title text-xl md:text-4xl font-[600]">Create New Vault</h2>
+                    <button class="dialog-close-icon text-[1.5rem] cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-x"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>
+                </div>
+                <form id="passwords-form">
+                    <div class="form-group mb-[1.5rem]">
+                        <label id="serviceLabelTitle" class="block mb-[0.5rem] font-[500]">Service Name</label>
+                        <input class="focus:outline-none focus:border-2 focus:border-[#4266FE] w-full p-[0.75rem] text-[1rem] bg-[#1a1a1a] rounded-[0.5rem]" type="text" value="" name="" id="serviceInput" placeholder="enter service name" required>
+                    </div>
+                    <div class="form-group mb-[1.5rem]">
+                        <label id="userNameLabelTitle" class="block mb-[0.5rem] font-[500]">Username</label>
+                        <input class="focus:outline-none focus:border-2 focus:border-[#4266FE] w-full p-[0.75rem] text-[1rem] bg-[#1a1a1a] rounded-[0.5rem]" type="text" value="" name="" id="userNameInput" placeholder="enter username" required>
+                    </div>
+                    <div class="form-group mb-[1.5rem] form-group relative">
+                        <label id="passwordLabelTitle" class="block mb-[0.5rem] font-[500]">Password</label>
+                        <input class="focus:outline-none focus:border-2 focus:border-[#4266FE] w-full p-[0.75rem] text-[1rem] bg-[#1a1a1a] rounded-[0.5rem]" type="password" value="" name="" id="passwordInput" placeholder="enter password" required>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="show-password absolute top-[70%] -translate-y-1/2 right-3 cursor-pointer icon icon-tabler icons-tabler-outline icon-tabler-eye"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6" /></svg>
+                    </div>
+                    <div class="form-group mb-[1.5rem]">
+                        <label id="websiteLabelTitle" class="block mb-[0.5rem] font-[500]">Website</label>
+                        <input class="focus:outline-none focus:border-2 focus:border-[#4266FE] w-full p-[0.75rem] text-[1rem] bg-[#1a1a1a] rounded-[0.5rem]" type="text" value="" name="" id="websiteInput" placeholder="enter website link" required>
+                    </div>
+                    <div class="dialog-action flex items-center gap-4">
+                        <button type="button" class="cancel-btn bg-[#f2f4f8] text-black py-1 px-3 md:py-[0.75rem] md:px-[1.5rem] rounded text-[17px] font-[500] cursor-pointer">Cancel</button>
+                        <button type="submit" class="save-btn bg-[#4266FE] text-white py-1 px-3 md:py-[0.75rem] md:px-[1.5rem] text-[17px] font-[500] rounded cursor-pointer">Save</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+    </div>
+    <script src="./modules/main.js" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>
