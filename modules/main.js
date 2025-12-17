@@ -1,4 +1,4 @@
-import {} from "/modules/sidebar.js"
+import {} from "./sidebar.js"
 import {passwordsForm} from "./accounts-list.js"
 
 const addBtn = document.querySelector(".add-btn")

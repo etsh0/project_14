@@ -1,4 +1,4 @@
-import { getPasswords, accountsList } from "./accounts-list.js";
+import { getPasswords} from "./accounts-list.js";
 import { saveFavoriteToLocalStorage } from "./favorite-list.js";
 import { getServiceIcon } from "./service-icon.js"
 
