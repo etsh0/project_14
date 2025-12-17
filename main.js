@@ -1,5 +1,5 @@
-import {} from "./sidebar.js"
-import {passwordsForm} from "./accounts-list.js"
+import {} from "./modules/sidebar.js"
+import {passwordsForm} from "./modules/accounts-list.js"
 
 const addBtn = document.querySelector(".add-btn")
 export const dialog = document.querySelector(".dialog")

@@ -1,6 +1,6 @@
 import { renderAccountDeatils, deatilsSection, deatilsContainer } from "./account-deatils.js"
 import { isMobile } from "./favorite-list.js"
-import { closeModal, dialog, dialogTitle } from "./main.js"
+import { closeModal, dialog, dialogTitle } from "../main.js"
 import { getServiceIcon } from "./service-icon.js"
 import { allItemsNumber } from "./sidebar.js"
 
